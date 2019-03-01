@@ -2,6 +2,8 @@
 
 [Spark性能优化指南——高级篇](https://tech.meituan.com/2016/05/12/spark-tuning-pro.html)
 
+[彻底搞懂spark的shuffle过程（shuffle write）](https://zhuanlan.zhihu.com/p/55954840)
+
 疑问：Spark 是全部在内存中运行吗？  
 
 答案 1:  
