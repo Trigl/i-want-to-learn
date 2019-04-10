@@ -17,3 +17,6 @@ alfred
 spectacle  
 slack  
 百度输入法
+
+Chrome 插件  
+Momentum
