@@ -7,7 +7,7 @@ public class ThreadId {
     // ID 生成器
     private static final AtomicInteger nextId = new AtomicInteger(0);
 
-    // 包含线程 ID 的 ThreadLocal 变量
+    // 包含线程 ID 的 ThreadLocal 变量，使用 withInitial 方法进行初始化
     private static final ThreadLocal<Integer> threadId = ThreadLocal.withInitial(() -> nextId.getAndIncrement());
 
     // 获取当前线程 ID
@@ -27,4 +27,16 @@ public class ThreadId {
 }
 ```
 
-当**线程存活**并且**`ThreadLocal` 实例可以被访问**时，每个线程都会有一个该 ThreadLocal 变量引用，这些引用都不相同，可以看作是该 ThreadLocal 变量的多个副本。一旦线程不存在，这些复制体就被 GC 掉了。
+为什么需要 ThreadLocal 这种线程私有的实例呢？
+
+在 Java 中，避免并发问题最简单有效的方法就是不要引入并发，也就是多个线程之间不共享变量，也就不会存在并发问题。
+
+当**线程存活**并且 `ThreadLocal` 实例可以被访问时，每个线程都会有一个该 ThreadLocal 变量引用，这些引用都不相同，可以看作是该 ThreadLocal 变量的多个副本。一旦线程不存在，这些复制体就被 GC 掉了。
+
+
+## Refer
+https://zhuanlan.zhihu.com/p/53698490
+
+https://zhuanlan.zhihu.com/p/26713362
+
+https://stackoverflow.com/questions/817856/when-and-how-should-i-use-a-threadlocal-variable
